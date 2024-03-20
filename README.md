@@ -92,7 +92,13 @@ import createEvent from "@serverless/event-mocks"
 const event = createEvent(
   "aws:kinesis",
   {
-    data: new Buffer("this is test data").toString("base64")
+    Records: [
+      {
+        kinesis: {
+          data: Buffer.from("this is test data").toString("base64"),
+        },
+      },
+    ],
   });
 ```
 
